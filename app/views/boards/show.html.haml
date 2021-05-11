@@ -5,6 +5,7 @@
     %div
       %p cohki0305
       %p= @board.display_created_at
+  - if user_signed_in?
     .board_detail_actions
       .dropdown
         = image_tag 'actions.svg', class: 'dropbtn'
