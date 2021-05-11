@@ -10,6 +10,16 @@ $back-icon-size: 16px;
     padding: $header-padding-y;
     font-weight: bold;
 
+
+  &_loginBtn {
+   
+    height: $avatar-size;
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 12px 16px;
+    
+  }
+
     &_logos {
         
         min-width: 0;
