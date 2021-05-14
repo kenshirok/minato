@@ -16,3 +16,15 @@
     = @board.content
   .board_heart
     = image_tag 'heart.svg'
+
+.board
+  %h2 コメント一覧
+  - @comments.each do |comment|
+    .board_comment
+      %p= comment.content
+
+
+.container
+  = link_to new_board_comment_path(@article) do
+    .btn-secondary
+      コメントを追加

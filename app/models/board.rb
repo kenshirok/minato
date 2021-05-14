@@ -23,6 +23,9 @@ class Board < ApplicationRecord
   validates :content, uniqueness: true
 
   validate :validate_title_and_content_length
+  
+  has_many :comments, dependent: :destroy
+  belongs_to :user
 
 
   def display_created_at
@@ -37,7 +40,8 @@ class Board < ApplicationRecord
   def validate_title_and_content_length
     char_count = self.title.length + self.content.length
     errors.add(:content, '10文字いじょうで！') unless char_count > 10
+    
 
-    belongs_to :user
+   
   end
 end
