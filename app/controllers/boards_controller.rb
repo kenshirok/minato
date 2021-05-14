@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
     
 
     def show
-  
+        @comments = @board.comments
     end
 
     def new
