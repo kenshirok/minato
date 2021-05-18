@@ -1,0 +1,15 @@
+.container.taskPage
+  .taskPage_user
+    .taskPage_user_image
+      = image_tag 'default-avatar.png'
+    .taskPage_user_basicInfo
+      .taskPage_user_name
+        .taskPage_user_displayName
+          #{current_user.display_name}（#{current_user.age}・#{I18n.t("enum.genders.#{current_user.gender}")}）
+        .taskPage_user_actionButton
+          = link_to 'Edit', edit_task_path
+      .taskPage_user_introduction
+        = curret_user.task&.introduction
+  
+  - current_user.boards.each do |board|
+    = render 'commons/board', board: board

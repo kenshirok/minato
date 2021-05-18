@@ -23,12 +23,29 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :boards, dependent: :destroy
+         has_one :task, dependent: :destroy
+
+         delegate :birthday, :age, :gender, to: :task, allow_nil: true
 
          def has_written?(borad)
           boards.exists?(id: board.id)
          end
 
          def display_name
-          self.email.split('@').first
+          task&.nickname || self.email.split('@').first
          end
+
+       
+
+         def prepare_task
+          task || build_task
+         end
+
+         def avatar_image
+          if task&.avatar&.attached?
+            task.avatar
+          else
+            'default-avatar.png'
+          end
+        end
 end
